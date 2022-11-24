@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style> 
+input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('downloa1d.png');
+  background-position: 30px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+</head>
+<body>
+
+<p>search form:</p>
+
+<form>
+  <input type="text" id="search" name="search" placeholder="Search..">
+
+</form>
+
+  <table >
+    <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+    </thead>
+    <tbody class="table">
+              
+    </tbody>
+    
+  </table>
+
+</body>
+<script>
+
+  let data = [
+    {
+      name:"captain america",
+      email:"captainamerica@gmail.com",
+      address:"usa"
+    },
+    {
+      name:"hulk",
+      email:"hulk@gmail.com",
+      address:"uk"
+    },
+    {
+      name:"iron man",
+      email:"ironman@gmail.com",
+      address:"new york"
+    },
+  ]
+  
+  let table = document.querySelector('.table');
+  let input = document.getElementById('search');
+
+  
+
+  input.addEventListener('input',()=>{
+    let str = "";
+    let value = input.value;
+    if(value === ""){
+      table.innerHTML = "";
+      return;
+    }
+    value=value.toLowerCase()
+    data.forEach((d)=>{
+      if(d.name.includes(value)||d.email.includes(value)||d.address.includes(value)){
+        str = str + `<tr>
+          <td>${d.name}</td>
+          <td>${d.email}</td>
+          <td>${d.address}</td>
+        </tr>`;
+      }
+    })
+    table.innerHTML = str;
+    
+  })
+
+
+</script>
+</html>
